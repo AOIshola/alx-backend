@@ -33,7 +33,8 @@ class LFUCache(BaseCaching):
                 min_freq = min(self.freq.values())
                 candidates = [k for k, v in self.freq.items() if v == min_freq]
                 if len(candidates) > 1:
-                    lru_candidate = min(candidates, key=lambda k: self.order.index(k))
+                    lru_candidate = min(candidates,
+                                        key=lambda k: self.order.index(k))
                 else:
                     lru_candidate = candidates[0]
                 del self.cache_data[lru_candidate]
